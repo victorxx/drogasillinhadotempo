@@ -2,35 +2,93 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Carrossel de Iframes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oportunidades em Destaque | Carrossel de Sites</title>
+  <meta name="description" content="Confira oportunidades em destaque através de um carrossel interativo de páginas, com navegação automática e visualização em tempo real.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Seu Nome ou Empresa">
+
+  <!-- Open Graph (SEO para redes sociais) -->
+  <meta property="og:title" content="Oportunidades em Destaque | Visualizador Automático">
+  <meta property="og:description" content="Acesse páginas de destaque com navegação automática por iframe. Descubra novas oportunidades em poucos segundos.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="URL_DA_IMAGEM_DE_COMPARTILHAMENTO.jpg">
+  <meta property="og:url" content="https://seudominio.com.br">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #eef1f5;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 20px;
-      text-align: center;
+      padding: 0;
     }
 
-    h1 {
-      color: #444;
-      margin-bottom: 20px;
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef1f5;
+      color: #222;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #2b2b2b;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     iframe {
-      width: 90%;
-      height: 80vh;
+      width: 100%;
+      max-width: 900px;
+      height: 75vh;
       border: none;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.15);
       background-color: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      iframe {
+        height: 65vh;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>CONFIRA ESSAS OPORTUNIDADES</h1>
-  <iframe id="iframe" src="https://creditopessoal.vercel.app/" loading="lazy"></iframe>
+  <header>
+    <h1>Confira essas oportunidades</h1>
+    <p>Explore páginas selecionadas em sequência, de forma rápida e automatizada.</p>
+  </header>
+
+  <main>
+    <iframe id="iframe" src="https://creditopessoal.vercel.app/" loading="lazy" title="Visualizador de oportunidades"></iframe>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Todos os direitos reservados.</p>
+  </footer>
 
   <script>
     const urls = [
@@ -47,7 +105,11 @@
 
     setInterval(() => {
       index = (index + 1) % urls.length;
-      iframe.src = urls[index];
+      iframe.style.opacity = 0;
+      setTimeout(() => {
+        iframe.src = urls[index];
+        iframe.style.opacity = 1;
+      }, 300);
     }, 15000); // troca a cada 15 segundos
   </script>
 
