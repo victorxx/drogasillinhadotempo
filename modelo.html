@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrossel de Iframes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef1f5;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      width: 90%;
+      height: 80vh;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CONFIRA ESSAS OPORTUNIDADES</h1>
+  <iframe id="iframe" src="https://creditopessoal.vercel.app/" loading="lazy"></iframe>
+
+  <script>
+    const urls = [
+      "https://vodkavilavelhavitoria.vercel.app/",
+      "https://guaraparilinhadotempo.vercel.app/",
+      "https://espiritosanto-es.com.br/vodka/",
+      "https://filmeseserie.com.br/vodka/",
+      "https://riodejaneironoticiadia.vercel.app/",
+      "https://fastfoodtimelinebrasil.vercel.app/"
+    ];
+
+    let index = 0;
+    const iframe = document.getElementById("iframe");
+
+    setInterval(() => {
+      index = (index + 1) % urls.length;
+      iframe.src = urls[index];
+    }, 15000); // troca a cada 15 segundos
+  </script>
+
+</body>
+</html>
